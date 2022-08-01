@@ -29,21 +29,21 @@ def addData(a, b, c):
     cur.execute("INSERT INTO MY_BOOK VALUES (?, ?, ?)", (a, b, c))
     conn.commit()
 
-# def get_book_list():
-#     book_list = []
-#     cur.execute("SELECT BOOKNAME FROM MY_BOOK")
-#     rows = cur.fetchall()
-#     for i in rows:
-#         book_list.append(i[0])
-#     print(book_list)
-#     return book_list    
+def get_book_list():
+    book_list = []
+    cur.execute("SELECT BOOKNAME FROM MY_BOOK")
+    rows = cur.fetchall()
+    for i in rows:
+        book_list.append(i[0])
+    print(book_list)
+    return book_list    
 
 
 
 if __name__ == "__main__":
     form()
 
-    # lst = get_book_list()
-    # st.write(lst)
+    lst = get_book_list()
+    st.write(lst)
 
 

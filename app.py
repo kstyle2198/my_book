@@ -20,7 +20,7 @@ def form():
             st.success ("Success!!")
         
         elif (bookname == "" or summary == "") and submit == True:
-            st.write("내용을 입력하세요!!")
+            st.warning("내용을 입력하세요!!")
 
 def addData(a, b, c):
     # cur.execute("""CREATE TABLE IF NOT EXISTS MY_BOOK(id integer primary key autoincrement, BOOKNAME TEXT(50), SUMMARY TEXT(500), DATE TEXT(20));""")
@@ -31,10 +31,10 @@ def addData(a, b, c):
 
 def get_book_list():
     book_list = []
-    cur.execute("SELECT BOOKNAME FROM MY_BOOK")
+    cur.execute("SELECT * FROM MY_BOOK")
     rows = cur.fetchall()
     for i in rows:
-        book_list.append(i[0])
+        book_list.append(i)
     print(book_list)
     return book_list    
 
@@ -44,6 +44,10 @@ if __name__ == "__main__":
     form()
 
     lst = get_book_list()
-    st.write(lst)
+    st.write("최근 책 제목 :", lst[-1][0])
+    st.text_area("내용 요약 : ", lst[-1][1], height=400)
+    st.write("읽은 날짜 :", lst[-1][2])
+
+    
 
 
